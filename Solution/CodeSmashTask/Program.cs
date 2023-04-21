@@ -8,7 +8,7 @@ namespace CodeSmashTask;
 class Program
 {
     static void Main(string[] args) { 
-            int codeListCount = Convert.ToInt32(Console.ReadLine().Trim());
+        int codeListCount = Convert.ToInt32(Console.ReadLine().Trim());
 
         List<string> codeList = new List<string>();
 

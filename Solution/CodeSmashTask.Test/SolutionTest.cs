@@ -7,120 +7,79 @@ public class SolutionTest
     [Fact]
     public void IsBuyerWinner_Example1()
     {
-        var codeList = new List<string>();
-        codeList.Add("apple, apple");
-        codeList.Add("banana, anything, banana");
+        var codeList = new List<string> { "apple, apple", "banana, anything, banana" };
+        var shoppingCart = new List<string>{ "orange", "apple", "apple", "banana", "orange", "banana" };
 
-        var shoppingCart = new List<string>();
-        shoppingCart.Add("orange");
-        shoppingCart.Add("apple");
-        shoppingCart.Add("apple");
-        shoppingCart.Add("banana");
-        shoppingCart.Add("orange");
-        shoppingCart.Add("banana");
-
-        int expected = 1;
         int actual = CodeSmashTask.ProductPromotionCalculator.IsBuyerWinner(codeList, shoppingCart);
          
-        Assert.Equal(expected, actual);
+        Assert.Equal(1, actual);
     }
 
     [Fact]
     public void IsBuyerWinner_Example2()
     {
-        var codeList = new List<string>();
-        codeList.Add("apple, apple");
-        codeList.Add("banana, anything, banana");
+        var codeList = new List<string> { "apple, apple", "banana, anything, banana" };
+        var shoppingCart = new List<string> { "banana", "orange", "banana", "apple", "apple" };
 
-        var shoppingCart = new List<string>();
-        shoppingCart.Add("banana");
-        shoppingCart.Add("orange");
-        shoppingCart.Add("banana");
-        shoppingCart.Add("apple");
-        shoppingCart.Add("apple");
-
-        int expected = 0;
         int actual = CodeSmashTask.ProductPromotionCalculator.IsBuyerWinner(codeList, shoppingCart);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(0, actual);
     }
 
     [Fact]
     public void IsBuyerWinner_Example3()
     {
-        var codeList = new List<string>();
-        codeList.Add("apple, apple");
-        codeList.Add("banana, anything, banana");
+        var codeList = new List<string> { "apple, apple", "banana, anything, banana" };
+        var shoppingCart = new List<string> { "apple", "banana", "apple", "banana", "orange", "banana" };
 
-        var shoppingCart = new List<string>();
-        shoppingCart.Add("apple");
-        shoppingCart.Add("banana");
-        shoppingCart.Add("apple");
-        shoppingCart.Add("banana");
-        shoppingCart.Add("orange");
-        shoppingCart.Add("banana");
-
-        int expected = 0;
         int actual = CodeSmashTask.ProductPromotionCalculator.IsBuyerWinner(codeList, shoppingCart);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(0, actual);
     }
 
     [Fact]
     public void IsBuyerWinner_Example4()
     {
-        var codeList = new List<string>();
-        codeList.Add("apple, apple");
-        codeList.Add("apple, apple, banana");
+        var codeList = new List<string> { "apple, apple", "apple, apple, banana" };
+        var shoppingCart = new List<string> { "apple", "apple", "apple", "banana" };
 
-        var shoppingCart = new List<string>();
-        shoppingCart.Add("apple");
-        shoppingCart.Add("apple");
-        shoppingCart.Add("apple");
-        shoppingCart.Add("banana");
-
-        int expected = 0;
         int actual = CodeSmashTask.ProductPromotionCalculator.IsBuyerWinner(codeList, shoppingCart);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(0, actual);
     }
     #endregion
 
     [Fact]
     public void IsBuyerWinner_Example4Modified()
     {
-        var codeList = new List<string>();
-        codeList.Add("apple, apple");
-        codeList.Add("apple, apple, banana");
+        var codeList = new List<string> { "apple, apple", "apple, apple, banana" };
+        var shoppingCart = new List<string> { "apple", "apple" , "apple", "apple", "banana" };
 
-        var shoppingCart = new List<string>();
-        shoppingCart.Add("apple");
-        shoppingCart.Add("apple");
-        shoppingCart.Add("apple");
-        shoppingCart.Add("apple");
-        shoppingCart.Add("banana");
-
-        int expected = 1;
         int actual = CodeSmashTask.ProductPromotionCalculator.IsBuyerWinner(codeList, shoppingCart);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(1, actual);
     }
 
     [Fact]
     public void IsBuyerWinner_WithEmptyCodeList()
     {
         var codeList = new List<string>();
+        var shoppingCart = new List<string> { "apple", "orange", "banana", "apple" };
 
-        var shoppingCart = new List<string>();
-        shoppingCart.Add("apple");
-        shoppingCart.Add("orange");
-        shoppingCart.Add("banana");
-        shoppingCart.Add("apple");
-
-        int expected = 1;
         int actual = CodeSmashTask.ProductPromotionCalculator.IsBuyerWinner(codeList, shoppingCart);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(1, actual);
+    }
+
+    [Fact]
+    public void IsBuyerWinner_WithEmptyShoppingCart()
+    {
+        var codeList = new List<string> { "apple, apple", "apple, apple, banana" };
+        var shoppingCart = new List<string> ();
+
+        int actual = CodeSmashTask.ProductPromotionCalculator.IsBuyerWinner(codeList, shoppingCart);
+
+        Assert.Equal(0, actual);
     }
 }
 

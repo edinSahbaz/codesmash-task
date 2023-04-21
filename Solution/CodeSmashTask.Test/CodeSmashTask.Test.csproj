@@ -23,6 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\codesmash-task\CodeSmashTask.csproj" />
+    <ProjectReference Include="..\CodeSmashTask\CodeSmashTask.csproj" />
   </ItemGroup>
 </Project>
