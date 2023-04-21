@@ -22,6 +22,8 @@ public static class ProductPromotionCalculator
 
         while (codeListRef < codeListLen && shoppingCartRef < shoppingCartLen)
         {
+            // Since input format is not defined we expect the input to be in the following format:
+            // a, b, c, d 
             var codeListArray = codeList[codeListRef].Split(", ");
             var startingIndex = shoppingCartRef;
 
@@ -42,8 +44,7 @@ public static class ProductPromotionCalculator
             }
         }
 
-        var output = codeListRef == codeListLen ? 1 : 0;
-        return output;
+        return codeListRef == codeListLen ? 1 : 0;
     }
 }
 
