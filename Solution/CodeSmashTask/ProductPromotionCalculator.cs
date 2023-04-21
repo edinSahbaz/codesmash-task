@@ -15,45 +15,35 @@ public static class ProductPromotionCalculator
 
     public static int IsBuyerWinner(List<string> codeList, List<string> shoppingCart)
     {
-        int i = 0, j = 0, m = codeList.Count, n = shoppingCart.Count;
+        int codeListRef = 0;
+        int shoppingCartRef = 0;
+        int codeListLen = codeList.Count;
+        int shoppingCartLen = shoppingCart.Count;
 
-        while (i < m && j < n)
+        while (codeListRef < codeListLen && shoppingCartRef < shoppingCartLen)
         {
-            var group = codeList[i].Split(", ");
-            var x = group[0];
-            var k = j;
-            for (int l = 0; l < group.Length && k < n; l++, k++)
+            var codeListArray = codeList[codeListRef].Split(", ");
+            var startingIndex = shoppingCartRef;
+
+            for (int i = 0; i < codeListArray.Length && startingIndex < shoppingCartLen; i++, startingIndex++)
             {
-                if (group[l] != "anything" && group[l] != shoppingCart[k])
-                {
+                if (codeListArray[i] != "anything" && codeListArray[i] != shoppingCart[startingIndex])
                     break;
-                }
             }
 
-            if (k == j + group.Length)
+            if (startingIndex == shoppingCartRef + codeListArray.Length)
             {
-                j = k;
-                i++;
+                shoppingCartRef = startingIndex;
+                codeListRef++;
             }
             else
             {
-                j++;
+                shoppingCartRef++;
             }
         }
 
-        return i == m ? 1 : 0;
+        var output = codeListRef == codeListLen ? 1 : 0;
+        return output;
     }
-
-    /*
-    Time complexity:
-    The time complexity of this code is O(nm) where "n" is the length of the codeList and "m" is the length of the shoppingCart.
-    This is because the function iterates through both lists sequentially using nested loops. In the worst-case scenario, the
-    function would have to iterate through every item in both lists, resulting in nm operations.
-
-    Space complexity:
-    The space complexity of this code is O(1). The function uses a constant amount of extra space to store
-    variables i, j, m, n, group, x, k, and l. Therefore, the space used by the function does not increase with the size of the
-    input lists.
-     */
 }
 
