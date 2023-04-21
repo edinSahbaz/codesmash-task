@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace CodeSmashTask;
 
 class Program
 {
-    static void Main(string[] args)
-    {
-        int codeListCount = Convert.ToInt32(Console.ReadLine().Trim());
+    static void Main(string[] args) { 
+            int codeListCount = Convert.ToInt32(Console.ReadLine().Trim());
 
         List<string> codeList = new List<string>();
 
@@ -27,25 +28,8 @@ class Program
             shoppingCart.Add(shoppingCartItem);
         }
 
-        int foo = Foo.IsBuyerWinner(codeList, shoppingCart);
+        int result = ProductPromotionCalculator.IsBuyerWinner(codeList, shoppingCart);
 
-        Console.WriteLine(foo);
-    }
-}
-
-public class Foo
-{
-    /*
-     * Complete the 'IsBuyerWinner' function below.
-     *
-     * The function is expected to return an Integer.
-     * The function accepts following parameters:
-     *  1. List (STRING_ARRAY) - codeList
-     *  2. List (STRING_ARRAY) - shoppingCart
-     */
-
-    public static int IsBuyerWinner(List<string> codeList, List<string> shoppingCart)
-    {
-        return 0;
+        Console.WriteLine(result);
     }
 }
